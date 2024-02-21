@@ -1,0 +1,23 @@
+función obtenerNúmero(mensaje):
+    imprimir(mensaje)
+    return leerNúmeroDesdeConsola()
+
+función mayorDeDos(número1, número2):
+    si número1 > número 2:
+        return número1
+    return número2
+
+función clasificarNúmeros(número1, número2):
+    si número1 == número2:
+        return 0
+    si número1 > número2:
+        return 1
+    return -1
+
+número1 = obtenerNúmero("Ingrese el primer número: ")
+número2 = obtenerNúmero("Ingrese el segundo número: ")
+
+mayor = mayorDeDos(número1, número2)
+clasificación = clasificarNúmeros(número1, número2)
+
+imprimir("El mayor es:", mayor, "y la clasificación es:", clasificación)
