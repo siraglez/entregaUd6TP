@@ -1,0 +1,26 @@
+@startuml
+
+class ComparacionYClasificacionNumeros {
+    + obtenerNumero(mensaje: String): double
+    + mayorDeDos(numero1: double, numero2: double): double
+    + clasificarNumeros(numero1: double, numero2: double): int
+}
+
+class Scanner {
+    - nextDouble(): double
+}
+
+class System {
+    + out: PrintWriter
+    + in: InputStream
+}
+
+class PrintWriter {
+    + println(mensaje: String)
+}
+
+class InputStream {
+    - read(): int
+}
+
+@enduml
