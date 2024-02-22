@@ -1,62 +1,91 @@
-procedimiento inicializarTablero(tablero):
-    rand = nuevo GeneradorDeNumerosAleatorios()
+#Definición de la interfaz TableroOperaciones
+Interfaz TableroOperaciones:
+    Método crearTablero()
+    Método inicializarTablero(tablero: Matriz de Caracteres)
 
-    #Colocar 2 barcos aleatorios en el tablero
-    por cada barco en rango de 0 a 1:
-        fila = rand.nextInt(4)
-        columna = rand.nextInt(4)
+#Definición de la interfaz EntradaDatos
+Interfaz EntradaDatos:
+    Método introducirEnteroEntreLimites(scanner: Objeto Scanner, mínimo: Entero, máximo: Entero)
 
-        #Verificar si la celda ya está ocupada por otro barco
-        mientras tablero[fila][columna] sea igual a 'B' hacer:
+#Definición de la interfaz BatallaNaval
+Interfaz BatallaNaval:
+    Método disparar(tablero: Matriz de Caracteres, fila: Entero, columna: Entero)
+
+#Implementación de la clase SimuladorBatallaNavalMejorado que implementa las interfaces
+Clase SimuladorBatallaNavalMejorado implementa TableroOperaciones, EntradaDatos, BatallaNaval:
+    #Método principal (main)
+    Método principal()
+        #Crear instancia de la clase
+        simulador = new SimuladorBatallaNavalMejorado()
+
+        #Crear tablero, inicializarlo y mostrarlo usando los métodos de la interfaz TableroOperaciones
+        tablero = simulador.crearTablero()
+        simulador.inicializarTablero(tablero)
+        simulador.mostrarTablero(tablero)
+
+        #Recibir datos del usuario usando el método de la interfaz
+        scanner = new Scanner(System.in)
+        fila = simulador.introducirEnteroEntreLimites(scanner, 1, 4)
+        columna = simulador.introducirEnteroEntreLimites(scanner, 1, 4)
+
+        #Imprimir resultado
+        resultado = simulador.disparar(tablero, fila, columna)
+
+        Si resultado es Verdadero
+            Imprimir("Tocado y hundido")
+        Sino
+            Imprimir("Agua")
+
+    #Implementación del método crearTablero de la interfaz TableroOperaciones
+    Método crearTablero()
+        Devolver Nueva Matriz de Caracteres de tamaño 4x4
+
+    #Implementación del método inicializarTablero de la interfaz TableroOperaciones
+    Método inicializarTablero(tablero: Matriz de Caracteres)
+        rand = new Random()
+
+        #Colocar 2 barcos aleatorios en el tablero
+        Para cada barco en rango de 0 a 2
             fila = rand.nextInt(4)
             columna = rand.nextInt(4)
-        fin mientras
 
-        #Colocar el barco en la posición generada
-        tablero[fila][columna] = 'B'
-    fin por cada
+            #Verificar si la celda ya está ocupada por otro barco
+            Mientras tablero[fila][columna] es igual a 'B'
+                fila = rand.nextInt(4)
+                columna = rand.nextInt(4)
 
-procedimiento mostrarTablero(tablero):
-    impriir("Tablero:")
+            #Colocar el barco en la posición generada
+            tablero[fila][columna] = 'B'
 
-    por cada fila en tablero hacer:
-        por cada celda en fila hacer:
-            si celda es igual a 0 entonces:
-                imprimir("_ ")
-            sino:
-                imprimir(celda + " ")
-            fin si
-        fin por cada
-        imprimir()
-    fin por cada
+    #Implementación del método mostrarTablero de la interfaz TableroOperaciones
+    Mçetodo mostrarTablero(tablero: Matriz de Caracteres)
+        Imprimir("Tablero:")
 
-función introducirEnteroEntreLimites(mínimo, máximo):
-    numero = 0
-    hacer:
-        imprimir("Ingrese un número entre " + minimo + " y " + máximo + ": ")
-        mientras no sea un entero válido hacer:
-            imprimir("Por favor, ingrese un número válido.")
-            scanner.next()
-        fin mientras
-        numero = scanner.nextInt()
-    mientras numero esté fuera de los límites mínimo y máximo:
-    devovler numero
+        Para cada fila en tablero:
+            Para cada celda en fila:
+                Si celda es igual a 0
+                    Imprimir("_ ")
+                Sino
+                    Imprimir(celda + " ")
+            Imprimir Nueva Linea
 
-función disparar(tablero, fila, columna):
-    si tablero[fila - 1][columna - 1] es igual a 'B0 entonces:
+    #Implementación del método introducirEnteroEntreLimites de la interfaz EntradaDatos
+    Método introducirEnteroEntreLimites(scanner: Objeto Scanner, mínimo: Entero, máximo: Entero)
+        numero = 0
+        Hacer
+            Imprimir("Ingrese un número entre " + minimo + " y " + maximo + ": ")
+            Mientras no scanner.hasNextInt()
+                Imprimir("Por favor, ingrese un número válido")
+                scanner.next()
+            numero = scanner.nextInt()
+        Mientras numero < minimo o numero > maximo
+            Devovler numero
+
+    #Implementación del método disparar de la interfaz BatallaNaval
+    Método disparar(tablero: Matriz de Caracteres, fila: Entero, columna: Entero)
+        Si tablero[fila - 1][columna - 1] es igual a 'B'
             tablero[fila - 1][columna - 1] = 'X' #Barco impactado
-            devover verdadero
-        sino
+            Devolver Verdadero
+        Sino
             tablero[fila - 1][columna - 1] = 'O' #Agua
-            devolver falso
-        fin si
-
-algoritmo principal:
-    tablero = crearTablero()
-    inicializarTablero(tablero)
-    mostrarTablero(tablero)
-    fila = introducirEnteroEntreLimites(1, 4)
-    columna = introducirEnteroEntreLimites(1, 4)
-    resultado = disparar(tablero, fila, columna)
-    si resultado:
-        imprimir "Tocado y hundido"
+            Devolver Falso
