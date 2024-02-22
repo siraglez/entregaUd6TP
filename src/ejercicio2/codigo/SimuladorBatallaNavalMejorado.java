@@ -1,20 +1,26 @@
-package ejercicio2;
+package ejercicio2.codigo;
 
 import java.util.Random;
 import java.util.Scanner;
 
-public class SimuladorBatallaNavalMejorado {
+public class SimuladorBatallaNavalMejorado implements TableroOperaciones, EntradaDatos, BatallaNaval {
 
     public static void main(String[] args) {
-        char[][] tablero = crearTablero();
-        inicializarTablero(tablero);
-        mostrarTablero(tablero);
+        //Crear instancia de la clase
+        SimuladorBatallaNavalMejorado simulador = new SimuladorBatallaNavalMejorado();
 
+        //Crear tablero, inicializarlo y mostrarlo usando los métodos de la interfaz
+        char[][] tablero = simulador.crearTablero();
+        simulador.inicializarTablero(tablero);
+        simulador.mostrarTablero(tablero);
+
+        //Recibir datos del usuario usando el método de la interfaz
         Scanner scanner = new Scanner(System.in);
-        int fila = introducirEnteroEntreLimites(scanner, 1, 4);
-        int columna = introducirEnteroEntreLimites(scanner, 1, 4);
+        int fila = simulador.introducirEnteroEntreLimites(scanner, 1, 4);
+        int columna = simulador.introducirEnteroEntreLimites(scanner, 1, 4);
 
-        boolean resultado = disparar(tablero, fila, columna);
+        //Imprimir resultado
+        boolean resultado = simulador.disparar(tablero, fila, columna);
 
         if (resultado) {
             System.out.println("Tocado y hundido.");
@@ -23,11 +29,14 @@ public class SimuladorBatallaNavalMejorado {
         }
     }
 
-    public static char[][] crearTablero() {
+    @Override
+    public char[][] crearTablero() {
         return new char[4][4];
     }
 
-    public static void inicializarTablero(char[][] tablero) {
+    //Función para inicializar el tablero
+    @Override
+    public void inicializarTablero(char[][] tablero) {
         Random rand = new Random();
 
         //Colocar 2 barcos aleatorios en el tablero
@@ -46,7 +55,10 @@ public class SimuladorBatallaNavalMejorado {
         }
     }
 
-    public static void mostrarTablero(char[][] tablero) {
+
+    //Función para mostrar el tablero
+    @Override
+    public void mostrarTablero(char[][] tablero) {
         System.out.println("Tablero:");
 
         for (char[] fila : tablero) {
@@ -61,7 +73,9 @@ public class SimuladorBatallaNavalMejorado {
         }
     }
 
-    public static int introducirEnteroEntreLimites(Scanner scanner, int minimo, int maximo) {
+    //Función para recibir los datos del usuario
+    @Override
+    public int introducirEnteroEntreLimites(Scanner scanner, int minimo, int maximo) {
         int numero;
         do {
             System.out.println("Ingrese un número entre " + minimo + " y " + maximo + ": ");
@@ -75,7 +89,9 @@ public class SimuladorBatallaNavalMejorado {
         return numero;
     }
 
-    public static boolean disparar(char[][] tablero, int fila, int columna) {
+    //Función para disparar al barco en las coordenadas indicadas
+    @Override
+    public boolean disparar(char[][] tablero, int fila, int columna) {
         if (tablero[fila - 1][columna - 1] == 'B') {
             tablero[fila - 1][columna - 1] = 'X'; //Barco impactado
             return true;
