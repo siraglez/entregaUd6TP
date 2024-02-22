@@ -1,23 +1,48 @@
-función obtenerNúmero(mensaje):
-    imprimir(mensaje)
-    return leerNúmeroDesdeConsola()
+#Definición de la interfac ObtenerNumero
+Interfaz ObtenerNumero:
+    Función obtenerNumero(mensaje: Cadena)
 
-función mayorDeDos(número1, número2):
-    si número1 > número 2:
-        return número1
-    return número2
+#Definición de la interfaz CompararYClasificarNumeros
+Interfaz CompararYClasificarNumeros:
+    Función mayorDeDos(numero, numero2)
+    Función clasificarNumeros(numero1, numero2)
 
-función clasificarNúmeros(número1, número2):
-    si número1 == número2:
-        return 0
-    si número1 > número2:
-        return 1
-    return -1
+#Definición de la clase ComparacionYClasificacionNumeros que implementa las interfaces
+Clase ComparacionYClasificacionNumeros implementa ObtenerNumero, CompararYClasificacionNumeros:
+    #Implementación de la función obtenerNumero de la interfaz ObtenerNumero
+    Función obtenerNumero(mensaje: Cadena)
+        scanner = CrearInstancia(Scanner, System.in)
+        Imprimir(mensaje)
+        Devolver scanner.SiguienteEntero()
 
-número1 = obtenerNúmero("Ingrese el primer número: ")
-número2 = obtenerNúmero("Ingrese el segundo número: ")
+    #Implementación de la función mayorDeDos de la interfaz CompararYClasificarNumeros
+    Función mayorDeDos(numero1, numero2):
+        Si numero1 > numero2 Entonces:
+            Devolver numero1
+        Sino
+            Devolver numero2
 
-mayor = mayorDeDos(número1, número2)
-clasificación = clasificarNúmeros(número1, número2)
+    #Implementación de la función clasificarNumeros de la interfaz CompararYClasificarNumeros
+    Función clasificarNumeros(numero1, numero2):
+        Si numero1 == numero2 Entonces:
+            Devolver 0
+        Sino Si numero1 > numero2 Entonces:
+            Devolver 1
+        Sino:
+            Devolver -1
 
-imprimir("El mayor es:", mayor, "y la clasificación es:", clasificación)
+#Función principal (main)
+Función Principal
+    #Crear instancia de la clase
+    programa = CrearInstancia(ComparacionYClasificacionNumeros)
+
+    #Obtener los dos números del usuario usando el método de la interfaz ObtenerNumero
+    numero1 = programa.obtenerNumero("Ingrese el primer número: ")
+    numero2 = programa.obtenerNumero("Ingrese el segundo número: ")
+
+    #Calcular el mayor de los dos números y la clasificación usando los métodos de la interfaz CompararYClasificarNumeros
+    mayor = programa.mayorDeDos(numero1, numero2)
+    clasificacion = programa.clasificarNumeros(numero1, numero2)
+
+    #Imprimir el resultado
+    Imprimir("El mayor es: " + mayor + " y la clasificación es: " + clasificacion)
