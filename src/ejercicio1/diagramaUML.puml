@@ -1,26 +1,16 @@
 @startuml
-
 class ComparacionYClasificacionNumeros {
-    + obtenerNumero(mensaje: String): double
-    + mayorDeDos(numero1: double, numero2: double): double
-    + clasificarNumeros(numero1: double, numero2: double): int
+    + obtenerNumero(String mensaje): double
+    + mayorDeDos(double numero1, double numero2): double
+    + clasificarNumeros(double numero1, double numero2): int
 }
-
-class Scanner {
-    - nextDouble(): double
+interface ObtenerNumero {
+    obtenerNumero(String mensaje): double
 }
-
-class System {
-    + out: PrintWriter
-    + in: InputStream
+interface CompararYClasificarNumeros {
+    mayorDeDos(double numero1, double numero2): double
+    clasificarNumeros(double numero1, double numero2): int
 }
-
-class PrintWriter {
-    + println(mensaje: String)
-}
-
-class InputStream {
-    - read(): int
-}
-
+ComparacionYClasificacionNumeros ..|> ObtenerNumero
+ComparacionYClasificacionNumeros ..|> CompararYClasificarNumeros
 @enduml
