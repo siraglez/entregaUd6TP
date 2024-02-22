@@ -1,0 +1,62 @@
+procedimiento inicializarTablero(tablero):
+    rand = nuevo GeneradorDeNumerosAleatorios()
+
+    #Colocar 2 barcos aleatorios en el tablero
+    por cada barco en rango de 0 a 1:
+        fila = rand.nextInt(4)
+        columna = rand.nextInt(4)
+
+        #Verificar si la celda ya está ocupada por otro barco
+        mientras tablero[fila][columna] sea igual a 'B' hacer:
+            fila = rand.nextInt(4)
+            columna = rand.nextInt(4)
+        fin mientras
+
+        #Colocar el barco en la posición generada
+        tablero[fila][columna] = 'B'
+    fin por cada
+
+procedimiento mostrarTablero(tablero):
+    impriir("Tablero:")
+
+    por cada fila en tablero hacer:
+        por cada celda en fila hacer:
+            si celda es igual a 0 entonces:
+                imprimir("_ ")
+            sino:
+                imprimir(celda + " ")
+            fin si
+        fin por cada
+        imprimir()
+    fin por cada
+
+función introducirEnteroEntreLimites(mínimo, máximo):
+    numero = 0
+    hacer:
+        imprimir("Ingrese un número entre " + minimo + " y " + máximo + ": ")
+        mientras no sea un entero válido hacer:
+            imprimir("Por favor, ingrese un número válido.")
+            scanner.next()
+        fin mientras
+        numero = scanner.nextInt()
+    mientras numero esté fuera de los límites mínimo y máximo:
+    devovler numero
+
+función disparar(tablero, fila, columna):
+    si tablero[fila - 1][columna - 1] es igual a 'B0 entonces:
+            tablero[fila - 1][columna - 1] = 'X' #Barco impactado
+            devover verdadero
+        sino
+            tablero[fila - 1][columna - 1] = 'O' #Agua
+            devolver falso
+        fin si
+
+algoritmo principal:
+    tablero = crearTablero()
+    inicializarTablero(tablero)
+    mostrarTablero(tablero)
+    fila = introducirEnteroEntreLimites(1, 4)
+    columna = introducirEnteroEntreLimites(1, 4)
+    resultado = disparar(tablero, fila, columna)
+    si resultado:
+        imprimir "Tocado y hundido"
