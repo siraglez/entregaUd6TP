@@ -1,0 +1,47 @@
+#Interfaz para encontrar el mayor valor en una tabla
+Interfaz FinderMayor:
+    función encontrarMayor/tabla: lista de enteros)
+
+#Interfaz para la generación de tablas aleatorias
+Interfaz GeneradorTablaAleatoria:
+    función crearTablaAleatoria(tamanio: entero, minimo: entero, maximo: entero)
+
+#Implementación de las interfaces en una clase
+clase ManipulacionTablas implementa GeneradorTablaAleatoria, FinderMayor:
+    función crearTablaAleatoria(tamanio, minimo, maximo)
+        tabla = lista vacía de enteros
+        para i de 1 hasta tamanio hacer:
+            agregar (aleatorioEntre(minimo, maximo)) a tabla
+        fin para
+        devolver tabla
+    fin función
+
+    función encontrarMayor(tabla)
+        mayor = obtenerElementoEnPosicion(tabla, 0)
+        para cada valor en tabla hacer:
+            si valor > mayor entonces:
+                mayor = valor
+            fin si
+        fin para
+        devolver mayor
+    fin función
+
+#Clase con el programa principal
+clase ManipulacionTablasYBusquedaMaximos
+    #Acceder a las interfaces desde el programa principal
+    generadorTablaAleatoria = nueva instancia de ManipulacionTablas()
+    finderMayor = nueva instancia de ManipulacionTablas()
+
+    #Crear una tabla aleatoria de 10 elementos con valores entre 1 y 100
+    tabla = generadorTablaAleatoria.crearTablaAleatoria(10, 1, 100)
+
+    #Encontrar el mayor valor de la tabla
+    mayor = finderMayor.encontrarMayor(tabla)
+
+    #Imprimir la tabla y el valor mayor
+    imprimir("Tabla: ")
+    para cada valor en la tabla hacer:
+        imprimir(valor + " ")
+    fin para
+    imprimir("n Mayor valor: " + mayor)
+fin clase

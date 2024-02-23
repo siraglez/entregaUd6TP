@@ -4,8 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="953cdbbd-25ef-4a7d-80d6-c79b6e98207b" name="Changes" comment="pseudocodigo ejercicio2">
-      <change afterPath="$PROJECT_DIR$/src/ejercicio2/diagramaUML.puml" afterDir="false" />
+    <list default="true" id="953cdbbd-25ef-4a7d-80d6-c79b6e98207b" name="Changes" comment="readme ejercicio2">
+      <change afterPath="$PROJECT_DIR$/src/ejercicio3/codigo/FinderMayor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ejercicio3/codigo/GeneradorTablaAleatoria.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ejercicio3/codigo/ManipulacionTablasYBusquedaMaximos.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ejercicio3/diagramaUML.puml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ejercicio3/pseudocodigo.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,10 +46,10 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.ComparacionYClasificacionNumeros.executor": "Run",
+    "Application.ManipulacionTablasYBusquedaMaximos.executor": "Run",
     "DefaultPlantUmlFileTemplate": "UML Class",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
@@ -74,7 +78,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708522860751</updated>
-      <workItem from="1708522861926" duration="14155000" />
+      <workItem from="1708522861926" duration="15462000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <option name="closed" value="true" />
@@ -188,7 +192,23 @@
       <option name="project" value="LOCAL" />
       <updated>1708631997945</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="diagrama ejercicio2">
+      <option name="closed" value="true" />
+      <created>1708675272378</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1708675272378</updated>
+    </task>
+    <task id="LOCAL-00016" summary="readme ejercicio2">
+      <option name="closed" value="true" />
+      <created>1708675499177</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1708675499177</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -215,6 +235,8 @@
     <MESSAGE value="readme ejercicio1" />
     <MESSAGE value="codigo ejercicio2" />
     <MESSAGE value="pseudocodigo ejercicio2" />
-    <option name="LAST_COMMIT_MESSAGE" value="pseudocodigo ejercicio2" />
+    <MESSAGE value="diagrama ejercicio2" />
+    <MESSAGE value="readme ejercicio2" />
+    <option name="LAST_COMMIT_MESSAGE" value="readme ejercicio2" />
   </component>
 </project>
