@@ -83,3 +83,126 @@ Función Principal
 # Diagrama UML
 
 El diagrama se encuentra en el paquete del ejercicio en (`diagramaUML.puml `).
+
+
+# Ejercicio 2: Simulador de Batalla Naval Mejorado
+
+Este código en Java representa un simulador simple del juego de Batalla Naval. El programa utiliza interfaces para definir operaciones relacionadas con el tablero, la entrada de datos y las acciones de la Batalla Naval. La clase `SimuladorBatallaNavalMejorado` implementa estas interfaces y proporciona las implementaciones específicas de los métodos.
+
+## 1. Interfaces:
+
+- **TableroOperaciones:** Define métodos para crear un tablero, inicializarlo y mostrarlo.
+- **EntradaDatos:** Define un método para introducir un entero entre límites, utilizando un objeto `Scanner`.
+- **BatallaNaval:** Define un método para disparar al tablero en unas coordenadas dadas.
+
+## 2. Clase `SimuladorBatallaNavalMejorado`:
+
+- **Método `main`:** Es el punto de entrada principal del programa. Aquí se instancia la clase `SimuladorBatallaNavalMejorado`, se crea un tablero, se inicializa y se muestra. Luego, se solicitan datos al usuario para determinar las coordenadas del disparo, se realiza el disparo y se imprime el resultado.
+- **Método `crearTablero`:** Implementación de la interfaz `TableroOperaciones`. Devuelve una nueva matriz de caracteres 4x4 que representa el tablero.
+- **Método `inicializarTablero`:** Implementación de la interfaz `TableroOperaciones`. Utiliza un generador de números aleatorios (`Random`) para colocar dos barcos aleatorios en el tablero, asegurándose de que las celdas no estén ocupadas por otros barcos.
+- **Método `mostrarTablero`:** Implementación de la interfaz `TableroOperaciones`. Imprime el contenido del tablero en la consola, mostrando '_' para celdas vacías y el contenido de la celda para barcos o disparos.
+- **Método `introducirEnteroEntreLimites`:** Implementación de la interfaz `EntradaDatos`. Solicita al usuario un número entre un rango específico y verifica que la entrada sea válida (un entero).
+- **Método `disparar`:** Implementación de la interfaz `BatallaNaval`. Verifica si la celda en las coordenadas indicadas contiene un barco. Si es así, marca la celda como 'X' (barco impactado) y devuelve `true`; de lo contrario, marca la celda como 'O' (agua) y devuelve `false`.
+
+En resumen, este programa simula una partida de Batalla Naval, permitiendo al usuario disparar a un tablero con dos barcos aleatorios y mostrando el resultado de cada disparo. Utiliza interfaces para organizar las operaciones y facilitar la expansión o modificación del programa en el futuro.
+
+# Pseudocódigo
+
+```java
+#Definición de la interfaz TableroOperaciones
+Interfaz TableroOperaciones:
+    Método crearTablero()
+    Método inicializarTablero(tablero: Matriz de Caracteres)
+
+#Definición de la interfaz EntradaDatos
+Interfaz EntradaDatos:
+    Método introducirEnteroEntreLimites(scanner: Objeto Scanner, mínimo: Entero, máximo: Entero)
+
+#Definición de la interfaz BatallaNaval
+Interfaz BatallaNaval:
+    Método disparar(tablero: Matriz de Caracteres, fila: Entero, columna: Entero)
+
+#Implementación de la clase SimuladorBatallaNavalMejorado que implementa las interfaces
+Clase SimuladorBatallaNavalMejorado implementa TableroOperaciones, EntradaDatos, BatallaNaval:
+    #Método principal (main)
+    Método principal()
+        #Crear instancia de la clase
+        simulador = new SimuladorBatallaNavalMejorado()
+
+        #Crear tablero, inicializarlo y mostrarlo usando los métodos de la interfaz TableroOperaciones
+        tablero = simulador.crearTablero()
+        simulador.inicializarTablero(tablero)
+        simulador.mostrarTablero(tablero)
+
+        #Recibir datos del usuario usando el método de la interfaz
+        scanner = new Scanner(System.in)
+        fila = simulador.introducirEnteroEntreLimites(scanner, 1, 4)
+        columna = simulador.introducirEnteroEntreLimites(scanner, 1, 4)
+
+        #Imprimir resultado
+        resultado = simulador.disparar(tablero, fila, columna)
+
+        Si resultado es Verdadero
+            Imprimir("Tocado y hundido")
+        Sino
+            Imprimir("Agua")
+
+    #Implementación del método crearTablero de la interfaz TableroOperaciones
+    Método crearTablero()
+        Devolver Nueva Matriz de Caracteres de tamaño 4x4
+
+    #Implementación del método inicializarTablero de la interfaz TableroOperaciones
+    Método inicializarTablero(tablero: Matriz de Caracteres)
+        rand = new Random()
+
+        #Colocar 2 barcos aleatorios en el tablero
+        Para cada barco en rango de 0 a 2
+            fila = rand.nextInt(4)
+            columna = rand.nextInt(4)
+
+            #Verificar si la celda ya está ocupada por otro barco
+            Mientras tablero[fila][columna] es igual a 'B'
+                fila = rand.nextInt(4)
+                columna = rand.nextInt(4)
+
+            #Colocar el barco en la posición generada
+            tablero[fila][columna] = 'B'
+
+    #Implementación del método mostrarTablero de la interfaz TableroOperaciones
+    Mçetodo mostrarTablero(tablero: Matriz de Caracteres)
+        Imprimir("Tablero:")
+
+        Para cada fila en tablero:
+            Para cada celda en fila:
+                Si celda es igual a 0
+                    Imprimir("_ ")
+                Sino
+                    Imprimir(celda + " ")
+            Imprimir Nueva Linea
+
+    #Implementación del método introducirEnteroEntreLimites de la interfaz EntradaDatos
+    Método introducirEnteroEntreLimites(scanner: Objeto Scanner, mínimo: Entero, máximo: Entero)
+        numero = 0
+        Hacer
+            Imprimir("Ingrese un número entre " + minimo + " y " + maximo + ": ")
+            Mientras no scanner.hasNextInt()
+                Imprimir("Por favor, ingrese un número válido")
+                scanner.next()
+            numero = scanner.nextInt()
+        Mientras numero < minimo o numero > maximo
+            Devovler numero
+
+    #Implementación del método disparar de la interfaz BatallaNaval
+    Método disparar(tablero: Matriz de Caracteres, fila: Entero, columna: Entero)
+        Si tablero[fila - 1][columna - 1] es igual a 'B'
+            tablero[fila - 1][columna - 1] = 'X' #Barco impactado
+            Devolver Verdadero
+        Sino
+            tablero[fila - 1][columna - 1] = 'O' #Agua
+            Devolver Falso
+
+```
+
+# Diagrama UML
+
+El diagrama se encuentra en el paquete del ejercicio en (`diagramaUML.puml `).
