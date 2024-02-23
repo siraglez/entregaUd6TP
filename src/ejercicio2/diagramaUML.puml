@@ -1,0 +1,35 @@
+@startuml
+interface TableroOperaciones {
+    +crearTablero(): char[][]
+    +inicializarTablero(tablero: char[][]): void
+    +mostrarTablero(tablero: char[][]): void
+}
+
+interface EntradaDatos {
+    +introducirEnteroEntreLimites(scanner: Scanner, minimo: int, max: int): int
+}
+
+interface BatallaNaval {
+    +disparar(tablero: char[][], fila: int, columna: int): boolean
+}
+
+class SimuladorBatallaNavalMejorado {
+    +main(args: String[]): void
+    +crearTablero(): char[][]
+    +inicializarTablero(tablero: char[][]): void
+    +mostrarTablero(tablero: char[][]): void
+    +introducirEnteroEntreLimites(scanner: Scanner, minimo: int, max: int): int
+    +disparar(tablero: char[][], fila: int, columna: int): boolean
+}
+
+TableroOperaciones ..> SimuladorBatallaNavalMejorado
+EntradaDatos <|.. SimuladorBatallaNavalMejorado
+BatallaNaval <|.. SimuladorBatallaNavalMejorado
+SimuladorBatallaNavalMejorado --> Scanner
+SimuladorBatallaNavalMejorado --> Random
+SimuladorBatallaNavalMejorado --> System
+SimuladorBatallaNavalMejorado --> Scanner
+SimuladorBatallaNavalMejorado --> Random
+SimuladorBatallaNavalMejorado --> System
+SimuladorBatallaNavalMejorado --> System
+@enduml
