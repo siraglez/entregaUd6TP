@@ -1,0 +1,23 @@
+@startuml
+interface FinderMayor {
+    + encontrarMayor(tabla: ArrayList<Integer>): int
+}
+
+interface GeneradorTablaAleatoria {
+    + crearTablaAleatoria(tamanio: int, minimo: int, maximo: int): ArrayList<Integer>
+}
+
+class ManipulacionTablas {
+    + crearTablaAleatoria(tamanio: int, minimo: int, maximo: int): ArrayList<Integer>
+    + encontrarMayor(tabla: ArrayList<Integer>): int
+}
+
+class ManipulacionTablasYBusquedaMaximos {
+    + main(args: String[]): void
+}
+
+FinderMayor <|.. ManipulacionTablas
+GeneradorTablaAleatoria <|.. ManipulacionTablas
+FinderMayor <|.. ManipulacionTablasYBusquedaMaximos
+GeneradorTablaAleatoria <|.. ManipulacionTablasYBusquedaMaximos
+@enduml
