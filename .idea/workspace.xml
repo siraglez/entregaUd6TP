@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="953cdbbd-25ef-4a7d-80d6-c79b6e98207b" name="Changes" comment="readme ejercicio2">
-      <change afterPath="$PROJECT_DIR$/src/ejercicio3/codigo/FinderMayor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ejercicio3/codigo/GeneradorTablaAleatoria.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ejercicio3/codigo/ManipulacionTablasYBusquedaMaximos.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ejercicio3/diagramaUML.puml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ejercicio3/pseudocodigo.txt" afterDir="false" />
+    <list default="true" id="953cdbbd-25ef-4a7d-80d6-c79b6e98207b" name="Changes" comment="codigo ejercicio4">
+      <change afterPath="$PROJECT_DIR$/src/ejercicio4/pseudocodigo.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,9 +16,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="UML Use Case" />
-        <option value="Class" />
         <option value="UML Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -46,6 +42,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.ComparacionYClasificacionNumeros.executor": "Run",
+    "Application.JuegoRebanioOvejas.executor": "Run",
     "Application.ManipulacionTablasYBusquedaMaximos.executor": "Run",
     "DefaultPlantUmlFileTemplate": "UML Class",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
@@ -78,7 +75,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708522860751</updated>
-      <workItem from="1708522861926" duration="15462000" />
+      <workItem from="1708522861926" duration="19493000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <option name="closed" value="true" />
@@ -208,7 +205,47 @@
       <option name="project" value="LOCAL" />
       <updated>1708675499177</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="codigo ejercicio3">
+      <option name="closed" value="true" />
+      <created>1708676833144</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1708676833144</updated>
+    </task>
+    <task id="LOCAL-00018" summary="pseudocodigo ejercicio3">
+      <option name="closed" value="true" />
+      <created>1708676850613</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1708676850613</updated>
+    </task>
+    <task id="LOCAL-00019" summary="diagrama ejercicio3">
+      <option name="closed" value="true" />
+      <created>1708692066880</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1708692066880</updated>
+    </task>
+    <task id="LOCAL-00020" summary="readme ejercicio3">
+      <option name="closed" value="true" />
+      <created>1708692077775</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1708692077775</updated>
+    </task>
+    <task id="LOCAL-00021" summary="codigo ejercicio4">
+      <option name="closed" value="true" />
+      <created>1708695905906</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1708695905906</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -237,6 +274,11 @@
     <MESSAGE value="pseudocodigo ejercicio2" />
     <MESSAGE value="diagrama ejercicio2" />
     <MESSAGE value="readme ejercicio2" />
-    <option name="LAST_COMMIT_MESSAGE" value="readme ejercicio2" />
+    <MESSAGE value="codigo ejercicio3" />
+    <MESSAGE value="pseudocodigo ejercicio3" />
+    <MESSAGE value="diagrama ejercicio3" />
+    <MESSAGE value="readme ejercicio3" />
+    <MESSAGE value="codigo ejercicio4" />
+    <option name="LAST_COMMIT_MESSAGE" value="codigo ejercicio4" />
   </component>
 </project>

@@ -1,0 +1,128 @@
+#Interfaz para definir el comportamiento de los movimientos
+Interface Movimiento
+    Procedimiento realizarMovimiento(Tablero tablero, Posicion posicion)
+    Booleano esMovimientoValido(Tablero tablero, Posicion posicion)
+Fin Interfaz
+
+#Implementación de un movimiento específico
+Clase MovimientoOveja Implementa Movimiento
+    Posicion posicion
+
+    Función MovimientoOveja(Posicion posicion)
+        Esto.posicion = posicion
+    Fin Función
+
+    Procedimiento realizarMovimiento(Tablero tablero, Posicion posicion)
+        #Lógica para mover la oveja a la posición deseada
+        tablero.tablero[posicion.fila][posicion.columna] = 'O'
+    Fin Procedimiento
+
+    Función esMovimientoValido(Tablero tablero, Posicion posicion)
+        #Verificar si la posición es válida para mover la oveja
+        Devolver posicion.fila >= 0 Y posicion.fila < Longitud(tablero.tablero) Y
+               posicion.columna >= 0 Y posicion.columna < Longitud(tablero.tablero[0]) Y
+               tablero.tablero[posicion.fila][posicion.columna] = '.'
+    Fin Función
+Fin Clase
+
+#Clase que representa la posición en el tablero
+Clase Posicion
+    Entero fila
+    Entero columna
+
+    Función Posicion(Entero fila, Entero columna)
+        Esto.fila = fila
+        Esto.columna = columna
+    Fin Función
+Fin Clase
+
+#Clase que representa el tablero
+Clase Tablero
+    Caracter[][] tablero
+
+    Función Tablero(Entero filas, Entero columnas)
+        tablero = Nueva Matriz de Caracteres de Tamaño filas x columnas
+        #Usando 'O' para ovejas y '.' para espacios
+        Para i desde 0 hasta filas - 1 Hacer
+            Para j desde 0 hasta columnas - 1 Hacer
+                tablero[i][j] = '.'
+            Fin Para
+        Fin Para
+    Fin Función
+
+    Procedimiento mostrarTablero()
+        Para i desde 0 hasta Longitud(tablero) - 1 Hacer
+            Para j desde 0 hasta Longitud(tablero[i]) - 1 Hacer
+                Mostrar(tablero[i][j] + " ")
+            Fin Para
+            MostrarNuevaLinea()
+        Fin Para
+        MostrarNuevaLinea()
+    Fin Procedimiento
+Fin Clase
+
+#Clase principal que ejecuta el juego
+Procedimiento JuegoRebanioOvejas()
+    Scanner scanner = Nuevo Scanner(System.in)
+
+    Mostrar("Ingrese el número de filas del tablero: ")
+    Entero filas = scanner.SiguienteEntero()
+
+    Mostrar("Ingrese el número de columnas del tablero: ")
+    Entero columnas = scanner.SiguienteEntero()
+
+    Tablero tablero = Nueva Tablero(filas, columnas)
+
+    Mientras No esConfiguracionFinal(tablero) Hacer
+        tablero.mostrarTablero()
+        Movimiento movimiento = obtenerMovimiento()
+
+        Si movimiento.esMovimientoValido(tablero, obtenerPosicion()) Entonces
+            movimiento.realizarMovimiento(tablero, obtenerPosicion())
+        Sino
+            Mostrar("Movimiento no válido. Inténtelo de nuevo.")
+        Fin Si
+    Fin Mientras
+
+    Mostrar("¡Objetivo alcanzado!")
+    scanner.Cerrar()
+Fin Procedimiento
+
+Función Booleano esConfiguracionFinal(Tablero tablero)
+    #Condiciones de finalización: todas las celdas están ocupadas por ovejas
+    Para i desde 0 hasta Longitud(tablero.tablero) - 1 Hacer
+        Para j desde 0 hasta Longitud(tablero.tablero[0]) - 1 Hacer
+            Si tablero.tablero[i][j] != 'O' Entonces
+                Devolver Falso // Todavía hay celdas vacías
+            Fin Si
+        Fin Para
+    Fin Para
+    Devolver Verdadero #Todas las celdas están ocupadas por ovejas, se ha terminado el juego
+Fin Función
+
+Función Movimiento obtenerMovimiento()
+    Scanner scanner = Nuevo Scanner(System.in)
+    Mostrar("Ingrese la fila donde desea mover la oveja: ")
+    Entero fila = scanner.SiguienteEntero()
+
+    Mostrar("Ingrese la columna donde desea mover la oveja: ")
+    Entero columna = scanner.SiguienteEntero()
+
+    Posicion posicion = Nueva Posicion(fila, columna)
+
+    Devolver Nuevo MovimientoOveja(posicion)
+Fin Función
+
+Función Posicion obtenerPosicion()
+    Scanner scanner = Nuevo Scanner(System.in)
+    Mostrar("Ingrese la fila del movimiento: ")
+    Entero fila = scanner.SiguienteEntero()
+
+    Mostrar("Ingrese la columna del movimiento: ")
+    Entero columna = scanner.SiguienteEntero()
+
+    Devolver Nueva Posicion(fila, columna)
+Fin Función
+
+#Llamada a la función principal para iniciar el juego
+JuegoRebanioOvejas()
