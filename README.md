@@ -206,3 +206,82 @@ Clase SimuladorBatallaNavalMejorado implementa TableroOperaciones, EntradaDatos,
 # Diagrama UML
 
 El diagrama se encuentra en el paquete del ejercicio en (`diagramaUML.puml `).
+
+
+# Ejercicio 3: Manipulación de Tablas y Búsqueda de Máximos
+
+* Este código Java define dos interfaces, `GeneradorTablaAleatoria` y `FinderMayor`, que proporcionan la capacidad de generar tablas aleatorias y encontrar el valor máximo en una tabla, respectivamente. Luego, estas interfaces se implementan en la clase `ManipulacionTablas`.
+
+## 1. Interfaces
+
+* `FinderMayor`: Define una interfaz con un método `encontrarMayor` que toma una lista de enteros como parámetro y devuelve el valor máximo en esa lista.
+* `GeneradorTablaAleatoria`: Define una interfaz con un método `crearTablaAleatoria` que toma un tamaño, un valor mínimo y un valor máximo como parámetros, y devuelve una lista de enteros que representa una tabla aleatoria con elementos en el rango especificado.
+
+## 2. Implementación de las interfaces
+
+* `ManipulacionTablas`: Implementa ambas interfaces (`GeneradorTablaAleatoria` y `FinderMayor`). En el método `crearTablaAleatoria`, genera una tabla de números aleatorios con el tamaño especificado y dentro del rango dado. En el método `encontrarMayor`, busca y devuelve el valor máximo en la tabla dada.
+
+## 3. Programa principal (`ManipulacionTablasYBusquedaMaximos`)
+
+* En el método `main`, se accede a las interfaces desde el programa principal creando instancias de la clase `ManipulacionTablas` y asignándolas a las variables `generadorTablaAleatoria` y `finderMayor`.
+* Se utiliza el método `crearTablaAleatoria` para generar una tabla aleatoria de 10 elementos con valores entre 1 y 100.
+* Se utiliza el método `encontrarMayor` para determinar el valor máximo en la tabla generada.
+* Finalmente, se imprime la tabla y el valor máximo utilizando `System.out.println`.
+
+En resumen, este código ejemplifica el uso de interfaces para abstraer la funcionalidad relacionada con la manipulación de tablas y búsqueda de valores máximos, proporcionando una estructura modular y fácilmente intercambiable para estas operaciones. Además, el programa principal muestra cómo utilizar estas interfaces para realizar operaciones específicas en una instancia concreta de la clase `ManipulacionTablas`.
+
+# Pseudocódigo:
+
+```java
+#Interfaz para encontrar el mayor valor en una tabla
+Interfaz FinderMayor:
+    función encontrarMayor/tabla: lista de enteros)
+
+#Interfaz para la generación de tablas aleatorias
+Interfaz GeneradorTablaAleatoria:
+    función crearTablaAleatoria(tamanio: entero, minimo: entero, maximo: entero)
+
+#Implementación de las interfaces en una clase
+clase ManipulacionTablas implementa GeneradorTablaAleatoria, FinderMayor:
+    función crearTablaAleatoria(tamanio, minimo, maximo)
+        tabla = lista vacía de enteros
+        para i de 1 hasta tamanio hacer:
+            agregar (aleatorioEntre(minimo, maximo)) a tabla
+        fin para
+        devolver tabla
+    fin función
+
+    función encontrarMayor(tabla)
+        mayor = obtenerElementoEnPosicion(tabla, 0)
+        para cada valor en tabla hacer:
+            si valor > mayor entonces:
+                mayor = valor
+            fin si
+        fin para
+        devolver mayor
+    fin función
+
+#Clase con el programa principal
+clase ManipulacionTablasYBusquedaMaximos
+    #Acceder a las interfaces desde el programa principal
+    generadorTablaAleatoria = nueva instancia de ManipulacionTablas()
+    finderMayor = nueva instancia de ManipulacionTablas()
+
+    #Crear una tabla aleatoria de 10 elementos con valores entre 1 y 100
+    tabla = generadorTablaAleatoria.crearTablaAleatoria(10, 1, 100)
+
+    #Encontrar el mayor valor de la tabla
+    mayor = finderMayor.encontrarMayor(tabla)
+
+    #Imprimir la tabla y el valor mayor
+    imprimir("Tabla: ")
+    para cada valor en la tabla hacer:
+        imprimir(valor + " ")
+    fin para
+    imprimir("n Mayor valor: " + mayor)
+fin clase
+```
+
+# Diagrama UML
+
+El diagrama se encuentra en el paquete del ejercicio en (`diagramaUML.puml `).
