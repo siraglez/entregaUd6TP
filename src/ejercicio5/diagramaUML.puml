@@ -1,0 +1,13 @@
+@startuml
+class TallerArteASCII {
+    + main(args: String[]): void
+    + dibujarCaracter(lienzo: char[][], fila: int, columna: int, caracter: char): void
+    + dibujarRectangulo(lienzo: char[][], fila1: int, columna1: int, fila2: int, columna2: int, caracter: char): void
+    + cambiarColor(lienzo: char[][], fila: int, columna: int, nuevoCaracter: char): void
+    + crearLienzo(lado: int): char[][]
+    + mostrarLienzo(lienzo: char[][]): String
+    + mostrarMenu(): int
+    + ejecutarAccion(lienzo: char[][], opcion: int): void
+}
+
+@enduml
