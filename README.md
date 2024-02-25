@@ -82,8 +82,8 @@ Función Principal
 
 # Diagrama UML
 
-El diagrama se encuentra en el paquete del ejercicio en (`diagramaUML.puml `).
-
+* El diagrama se encuentra en el paquete del ejercicio en (`diagramaUML.puml `).
+* También se entregará una imagen del diagrama (algunos archivos `.puml` no funcionan correctamente).
 
 # Ejercicio 2: Simulador de Batalla Naval Mejorado
 
@@ -205,8 +205,8 @@ Clase SimuladorBatallaNavalMejorado implementa TableroOperaciones, EntradaDatos,
 
 # Diagrama UML
 
-El diagrama se encuentra en el paquete del ejercicio en (`diagramaUML.puml `).
-
+* El diagrama se encuentra en el paquete del ejercicio en (`diagramaUML.puml `).
+* También se entregará una imagen del diagrama (algunos archivos `.puml` no funcionan correctamente).
 
 # Ejercicio 3: Manipulación de Tablas y Búsqueda de Máximos
 
@@ -284,4 +284,148 @@ fin clase
 
 # Diagrama UML
 
-El diagrama se encuentra en el paquete del ejercicio en (`diagramaUML.puml `).
+* El diagrama se encuentra en el paquete del ejercicio en (`diagramaUML.puml `).
+* También se entregará una imagen del diagrama (algunos archivos `.puml` no funcionan correctamente).
+
+
+# Ejercicio 4: Juego del Rebaño de Ovejas
+
+Este código Java representa un juego simple llamado "JuegoRebanioOvejas". Aquí hay una explicación detallada:
+
+## 1. Clase Posicion:
+
+- Define una posición en el tablero con las coordenadas fila y columna.
+- Tiene un constructor que inicializa la posición con las coordenadas proporcionadas.
+
+## 2. Clase Tablero:
+
+- Representa el tablero del juego.
+- El tamaño del tablero está fijo en 8x8 (TAMANIO = 8).
+- Tiene una matriz de caracteres (tablero) para almacenar el estado del juego.
+- La inicialización del tablero se realiza en el método `inicializarTablero`, donde se llena con puntos (.) y se colocan algunas ovejas (O) en posiciones aleatorias.
+- El método `toString` genera una representación visual del tablero con números de fila y columna.
+- `obtenerValor` devuelve el valor en una posición específica del tablero.
+- `realizarMovimiento` coloca una oveja en una nueva posición.
+
+## 3. Clase JuegoRebanioOvejas:
+
+- Contiene el método principal `main` donde se inicia el juego.
+- Crea un objeto `Tablero` y un `Scanner` para entrada de usuario.
+- En un bucle infinito, muestra el estado actual del tablero, solicita al usuario una posición para mover una oveja y realiza la acción si es válida.
+- El juego continúa hasta que se alcanza un estado final (todas las celdas ocupadas) y muestra un mensaje de "¡Objetivo alcanzado!".
+
+Es importante destacar que hay un problema en la implementación de `esConfiguracionFinal` donde intenta verificar si el tablero está completo revisando la representación de la cadena del tablero. La corrección sugerida es revisar directamente la matriz del tablero en lugar de depender de la cadena.
+
+# Pseudocódigo
+
+```java
+clase Posición:
+    Entero fila, columna
+
+    Posicion(fila, columna):
+        Esto.fila = fila
+        Esto.columna = columna
+
+clase Tablero:
+    Constante entera TMANIO = 8
+    Caracter tablero[TAMANIO][TAMANIO]
+
+    Función inicializarTablero():
+        Para fila de 0 hasta TAMANIO - 1
+            Para columna de 0 hasta TAMANIO - 1
+                tablero[fila][columna] = '.'
+            fin para
+        fin para
+
+        #Agregar algunas ovejas al tablero
+        Lista ovejas = generarPosicionesAleatorias(6)
+        Para cada Posición en ovejas
+            tablero[Posicion.fila][Posicion.columna] = 'O'
+        fin para
+
+    Lista generarPosicionesAleatorias(Entero cantidad)
+        Lista posiciones
+        Para i de 0 hasta cantidad - 1
+            Entero fila = AleatorioEntre(0, TAMANIO - 1)
+            Entero columna = AleatorioEntre(0, TAMANIO - 1)
+            Agregar al final de posiciones una nueva Posicion(fila, columna)
+        fin para
+        Devolver posiciones
+    fin lista
+
+    Caracter obtenerValor(Posicion posicion)
+        Devolver tableroposicion.fila][posicion.columna]
+    fin caracter
+
+    Función realizarMovimiento(Posicion nuevaPosicion)
+        tablero[nuevaPosicion.fila][nuevaPosicion.columna] = 'O'
+    fin función
+
+    Cadena toString()
+        Cadena auxiliar = " "
+
+        #Imprimir números de columna
+        auxiliar += "      "
+        Para i de 0 hasta TAMANIO - 1
+            auxiliar += i + "   "
+        fin para
+        auxiliar += "\n"
+
+        #Imprimir el tablero con números de fila y contenido
+        Para fila de 0 hasta TAMANIO - 1
+            auxiliar += fila + " "
+            Para columna de 0 hasta TAMANIO - 1
+                auxiliar += " | " + tablero[fila][columna]
+            fin para
+            auxiliar += " \n"
+        fin para
+        Devolver auxiliar
+    fin cadena
+
+Clase JuegoRebanioOvejas
+    Tablero tablero = nuevo Tablero()
+    Mientras verdadero:
+        Imprimir(tablero.toString())
+        Posicion movimiento = obtenerMovimiento()
+
+        Si no esMovimientoValido(tablero, movimiento) Entonces:
+            Imprimir("El movimiento no es válido. La celda ya contiene una oveja.")
+            Continuar
+        fin si
+
+        realizarMovimiento(tablero, movimiento)
+
+        Si esConfiguracionFinal(tablero) Entonces:
+            Imprimir("¡Objetivo alcanzado!")
+            descanso
+        fin si
+    fin mientras
+
+    Función booleana esMovimientoValido(Tablero tablero, Posicion posicion):
+        Devolver tablero.obtenerValor(posicion) = '.'
+
+    Función realizarMovimiento(Tablero tablero, Posicion nuevaPosicion):
+        tablero.realizarMovimiento(nuevaPosicion)
+
+    Función booleana esConfiguracionFinal(Tablero tablero):
+        Para fila de 0 hasta tablero.TAMANIO - 1
+            Para columna de 0 hasta tablero.TAMANIO - 1
+                Si tablero.obtenerValor(Posicion(fila, columna)) = '.' Entonces:
+                    Devolver falso
+                fin si
+            fin para
+        fin para
+        Devolver verdadero
+
+    Función Posicion obtenerMovimiento():
+        Imprimir("Ingrese las coordenadas de la celda a la que desea mover una oveja (fila columna): ")
+        Entero fila = LeerEntero()
+        Entero columna = LeeroEntero()
+        Devolver nueva Posicion(fila, columna)
+
+```
+
+# Diagrama UML
+
+* El diagrama se encuentra en el paquete del ejercicio en (`diagramaUML.puml `).
+* También se entregará una imagen del diagrama (algunos archivos `.puml` no funcionan correctamente).
