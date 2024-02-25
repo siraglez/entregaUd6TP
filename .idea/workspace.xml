@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="953cdbbd-25ef-4a7d-80d6-c79b6e98207b" name="Changes" comment="pseudocodigo ejercicio4">
+    <list default="true" id="953cdbbd-25ef-4a7d-80d6-c79b6e98207b" name="Changes" comment="otros cambios">
+      <change afterPath="$PROJECT_DIR$/src/ejercicio5/codigo/TallerArteASCII.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ejercicio5/pseudocodigo.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ejercicio4/codigo/JuegoRebanioOvejas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ejercicio4/codigo/JuegoRebanioOvejas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ejercicio4/codigo/Movimiento.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ejercicio4/codigo/MovimientoOveja.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ejercicio4/codigo/Posicion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ejercicio4/codigo/Posicion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ejercicio4/codigo/Tablero.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,8 +18,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="UML Use Case" />
-        <option value="UML Class" />
         <option value="Interface" />
+        <option value="UML Class" />
         <option value="Class" />
       </list>
     </option>
@@ -53,6 +49,7 @@
     "Application.ComparacionYClasificacionNumeros.executor": "Run",
     "Application.JuegoRebanioOvejas.executor": "Run",
     "Application.ManipulacionTablasYBusquedaMaximos.executor": "Run",
+    "Application.TallerArteASCII.executor": "Run",
     "DefaultPlantUmlFileTemplate": "UML Class",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -84,7 +81,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708522860751</updated>
-      <workItem from="1708522861926" duration="30706000" />
+      <workItem from="1708522861926" duration="35510000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <option name="closed" value="true" />
@@ -262,7 +259,47 @@
       <option name="project" value="LOCAL" />
       <updated>1708696807356</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="codigo ejercicio4">
+      <option name="closed" value="true" />
+      <created>1708883923556</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1708883923556</updated>
+    </task>
+    <task id="LOCAL-00024" summary="pseudocodigo ejercicio4">
+      <option name="closed" value="true" />
+      <created>1708883932930</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1708883932930</updated>
+    </task>
+    <task id="LOCAL-00025" summary="diagrama ejercicio4">
+      <option name="closed" value="true" />
+      <created>1708884347550</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1708884347550</updated>
+    </task>
+    <task id="LOCAL-00026" summary="readme ejercicio4">
+      <option name="closed" value="true" />
+      <created>1708884519836</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1708884519836</updated>
+    </task>
+    <task id="LOCAL-00027" summary="otros cambios">
+      <option name="closed" value="true" />
+      <created>1708884531429</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1708884531429</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -297,6 +334,24 @@
     <MESSAGE value="readme ejercicio3" />
     <MESSAGE value="codigo ejercicio4" />
     <MESSAGE value="pseudocodigo ejercicio4" />
-    <option name="LAST_COMMIT_MESSAGE" value="pseudocodigo ejercicio4" />
+    <MESSAGE value="diagrama ejercicio4" />
+    <MESSAGE value="readme ejercicio4" />
+    <MESSAGE value="otros cambios" />
+    <option name="LAST_COMMIT_MESSAGE" value="otros cambios" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/ejercicio5/codigo/TallerArteASCII.java</url>
+          <line>23</line>
+          <properties class="ejercicio5.codigo.TallerArteASCII" method="dibujarRectangulo">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
