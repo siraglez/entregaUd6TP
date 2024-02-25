@@ -429,3 +429,144 @@ Clase JuegoRebanioOvejas
 
 * El diagrama se encuentra en el paquete del ejercicio en (`diagramaUML.puml `).
 * También se entregará una imagen del diagrama (algunos archivos `.puml` no funcionan correctamente).
+
+
+# Ejercicio 5: Taller de Arte ASCII
+
+Este código Java implementa un taller de arte ASCII, permitiendo al usuario realizar acciones como dibujar caracteres en un lienzo, crear rectángulos y cambiar el color de ciertos caracteres en un espacio bidimensional.
+
+## 1. Método Principal (`main`)
+
+El programa comienza declarando una matriz bidimensional (`char[][] lienzo`) que actúa como el lienzo para el arte ASCII, inicializándolo con un tamaño de 10x10. Utiliza un bucle `do-while` que muestra continuamente el lienzo, solicita al usuario una opción del menú y ejecuta la acción correspondiente hasta que el usuario selecciona la opción "4" para salir.
+
+## 2. Procedimientos (`dibujarCaracter`, `dibujarRectangulo`, `cambiarColor`)
+
+- `dibujarCaracter`: Asigna un carácter a una posición específica en el lienzo.
+- `dibujarRectangulo`: Rellena un rectángulo en el lienzo dadas dos esquinas especificadas por las coordenadas de fila y columna.
+- `cambiarColor`: Cambia el carácter en una posición específica del lienzo.
+
+## 3. Funciones (`crearLienzo`, `mostrarLienzo`, `mostrarMenu`)
+
+- `crearLienzo`: Devuelve un nuevo lienzo bidimensional vacío con el tamaño especificado.
+- `mostrarLienzo`: Genera una representación en forma de cadena del lienzo para su visualización en la consola, incluyendo números de fila y columna.
+- `mostrarMenu`: Muestra el menú de opciones y espera que el usuario ingrese una opción.
+
+## 4. Procedimiento (`ejecutarAccion`)
+
+Según la opción seleccionada por el usuario, ejecuta la acción correspondiente:
+
+- Dibujar un carácter en una posición específica.
+- Dibujar un rectángulo en el lienzo.
+- Cambiar el color de un carácter en una posición específica.
+- Salir del programa.
+
+El código utiliza la clase `Scanner` para obtener la entrada del usuario desde la consola y ofrece una interfaz interactiva para manipular y visualizar el arte ASCII en el lienzo.
+
+# Pseudocódigo
+
+```java
+Clase TallerArteASCII:
+    Dimensión lienzo[10][10]
+    Entero opción
+
+    Hacer
+        Imprimir(mostrarLienzo(lienzo))
+        opcion = mostrarMenu()
+        ejecutarAccion(lienzo, opcion)
+    Mientras opcion != 4
+
+    Procedimiento dibujarCaracter(lienzo, fila, columna, caracter):
+        lienzo[fila][columna] = caracter
+
+    Procedimiento dibujarRectangulo(lienzo, fila1, fila2, columna1, columna2, caracter):
+        para i de fila1 hasta fila2:
+            para j de columna1 hasta columna2:
+                lienzo[i][j] = caracter
+            fin para
+        fin para
+
+    Procedimiento cambiarColor(lienzo, fila, columna, nuevoCaracter):
+        lienzo[fila][columna] = nuevoCaracter
+
+    Función crearLienzo(lado):
+        Devolver nueva matriz de caracter de dimensiones lado * lado
+
+    Función mostrarLienzo(lienzo):
+        Cadena aux = ""
+
+        aux = "    "
+        para i de 0 hasta longitud del lienzo - 1:
+            aux = aux + i + " "
+        fin para
+        aux = aux + "\n"
+
+        para fila de 0 hasta longitud del lienzo - 1:
+            aux = aux + fila + " "
+            para columna de 0 hasta longitud del lienzo en fila - 1:
+                aux = aux + " " + lienzo[fila][columna] + ""
+            fin para
+            aux = aux + "\n"
+        fin para
+        devolver aux
+
+    Función mostrarMenu():
+        Entero opcion
+
+        Imprimir("1. Dibujar carácter.")
+        Imprimir("2. Dibujar rectángulo.")
+        Imprimir("3. Cambiar color.")
+        Imprimir("4. Salir")
+        Imprimir("Seleccione una opción: ")
+
+        Leer opcion
+        devolver opción
+
+    Procedimiento ejecutarAccion(lienzo, opcion):
+        Entero filaCaracter, columnaCaracter, fila1, columna1, fila2, columna2, filaColor, columnaColor,
+        Caracter caracter, caracterRectangulo, caracterColor
+
+        Según opcion hacer:
+            Caso 1:
+                Imprimir("Ingrese fila: ")
+                Leer filaCaracter
+                Imprimir("Ingrese columna: ")
+                Leer columnaCaracter
+                Imprimir("Ingrese caracter: ")
+                Leer caracter
+                dibujarCaracter(lienzo, filaCaracter, columnaCaracter, caracter)
+
+            fin caso
+            Caso 2:
+               Imprimir("Ingrese fila esquina 1: ")
+               Leer fila1
+               Imprimir("Ingrese columna esquina 1: ")
+               Leer columna1
+               Imprimir("Ingrese fila esquina 2: ")
+               Leer fila2
+               Imprimir("Ingrese columna esquina 2: ")
+               Leer columna2
+               Imprimir("Ingrese carácter: ")
+               Leer caracterRectangulo
+               dibujarRectangulo(lienzo, fila1, columna1, fila2, columna2, caracterRectangulo)
+            fin caso
+            Caso 3:
+               Imprimir("Ingrese fila: ")
+               Leer filaColor
+               Imprimr("Ingrese columna: ")
+               Leer columnaColor
+               Imprimir("Ingrese carácter: ")
+               Leer caracterColor
+               cambiarColor(lienzo, filaColor, columnaColor, caracterColor)
+            fin caso
+            Caso 4:
+                Imprimir("Saliendo del programa.")
+            fin caso
+            Por defecto:
+                Imprimir("Opción no válida. Intente nuevamente")
+        fin según
+```
+
+# Diagrama UML
+
+* El diagrama se encuentra en el paquete del ejercicio en (`diagramaUML.puml `).
+* También se entregará una imagen del diagrama (algunos archivos `.puml` no funcionan correctamente).
