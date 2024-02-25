@@ -1,128 +1,103 @@
-#Interfaz para definir el comportamiento de los movimientos
-Interface Movimiento
-    Procedimiento realizarMovimiento(Tablero tablero, Posicion posicion)
-    Booleano esMovimientoValido(Tablero tablero, Posicion posicion)
-Fin Interfaz
+clase Posición:
+    Entero fila, columna
 
-#Implementación de un movimiento específico
-Clase MovimientoOveja Implementa Movimiento
-    Posicion posicion
-
-    Función MovimientoOveja(Posicion posicion)
-        Esto.posicion = posicion
-    Fin Función
-
-    Procedimiento realizarMovimiento(Tablero tablero, Posicion posicion)
-        #Lógica para mover la oveja a la posición deseada
-        tablero.tablero[posicion.fila][posicion.columna] = 'O'
-    Fin Procedimiento
-
-    Función esMovimientoValido(Tablero tablero, Posicion posicion)
-        #Verificar si la posición es válida para mover la oveja
-        Devolver posicion.fila >= 0 Y posicion.fila < Longitud(tablero.tablero) Y
-               posicion.columna >= 0 Y posicion.columna < Longitud(tablero.tablero[0]) Y
-               tablero.tablero[posicion.fila][posicion.columna] = '.'
-    Fin Función
-Fin Clase
-
-#Clase que representa la posición en el tablero
-Clase Posicion
-    Entero fila
-    Entero columna
-
-    Función Posicion(Entero fila, Entero columna)
+    Posicion(fila, columna):
         Esto.fila = fila
         Esto.columna = columna
-    Fin Función
-Fin Clase
 
-#Clase que representa el tablero
-Clase Tablero
-    Caracter[][] tablero
+clase Tablero:
+    Constante entera TMANIO = 8
+    Caracter tablero[TAMANIO][TAMANIO]
 
-    Función Tablero(Entero filas, Entero columnas)
-        tablero = Nueva Matriz de Caracteres de Tamaño filas x columnas
-        #Usando 'O' para ovejas y '.' para espacios
-        Para i desde 0 hasta filas - 1 Hacer
-            Para j desde 0 hasta columnas - 1 Hacer
-                tablero[i][j] = '.'
-            Fin Para
-        Fin Para
-    Fin Función
+    Función inicializarTablero():
+        Para fila de 0 hasta TAMANIO - 1
+            Para columna de 0 hasta TAMANIO - 1
+                tablero[fila][columna] = '.'
+            fin para
+        fin para
 
-    Procedimiento mostrarTablero()
-        Para i desde 0 hasta Longitud(tablero) - 1 Hacer
-            Para j desde 0 hasta Longitud(tablero[i]) - 1 Hacer
-                Mostrar(tablero[i][j] + " ")
-            Fin Para
-            MostrarNuevaLinea()
-        Fin Para
-        MostrarNuevaLinea()
-    Fin Procedimiento
-Fin Clase
+        #Agregar algunas ovejas al tablero
+        Lista ovejas = generarPosicionesAleatorias(6)
+        Para cada Posición en ovejas
+            tablero[Posicion.fila][Posicion.columna] = 'O'
+        fin para
 
-#Clase principal que ejecuta el juego
-Procedimiento JuegoRebanioOvejas()
-    Scanner scanner = Nuevo Scanner(System.in)
+    Lista generarPosicionesAleatorias(Entero cantidad)
+        Lista posiciones
+        Para i de 0 hasta cantidad - 1
+            Entero fila = AleatorioEntre(0, TAMANIO - 1)
+            Entero columna = AleatorioEntre(0, TAMANIO - 1)
+            Agregar al final de posiciones una nueva Posicion(fila, columna)
+        fin para
+        Devolver posiciones
+    fin lista
 
-    Mostrar("Ingrese el número de filas del tablero: ")
-    Entero filas = scanner.SiguienteEntero()
+    Caracter obtenerValor(Posicion posicion)
+        Devolver tableroposicion.fila][posicion.columna]
+    fin caracter
 
-    Mostrar("Ingrese el número de columnas del tablero: ")
-    Entero columnas = scanner.SiguienteEntero()
+    Función realizarMovimiento(Posicion nuevaPosicion)
+        tablero[nuevaPosicion.fila][nuevaPosicion.columna] = 'O'
+    fin función
 
-    Tablero tablero = Nueva Tablero(filas, columnas)
+    Cadena toString()
+        Cadena auxiliar = " "
 
-    Mientras No esConfiguracionFinal(tablero) Hacer
-        tablero.mostrarTablero()
-        Movimiento movimiento = obtenerMovimiento()
+        #Imprimir números de columna
+        auxiliar += "      "
+        Para i de 0 hasta TAMANIO - 1
+            auxiliar += i + "   "
+        fin para
+        auxiliar += "\n"
 
-        Si movimiento.esMovimientoValido(tablero, obtenerPosicion()) Entonces
-            movimiento.realizarMovimiento(tablero, obtenerPosicion())
-        Sino
-            Mostrar("Movimiento no válido. Inténtelo de nuevo.")
-        Fin Si
-    Fin Mientras
+        #Imprimir el tablero con números de fila y contenido
+        Para fila de 0 hasta TAMANIO - 1
+            auxiliar += fila + " "
+            Para columna de 0 hasta TAMANIO - 1
+                auxiliar += " | " + tablero[fila][columna]
+            fin para
+            auxiliar += " \n"
+        fin para
+        Devolver auxiliar
+    fin cadena
 
-    Mostrar("¡Objetivo alcanzado!")
-    scanner.Cerrar()
-Fin Procedimiento
+Clase JuegoRebanioOvejas
+    Tablero tablero = nuevo Tablero()
+    Mientras verdadero:
+        Imprimir(tablero.toString())
+        Posicion movimiento = obtenerMovimiento()
 
-Función Booleano esConfiguracionFinal(Tablero tablero)
-    #Condiciones de finalización: todas las celdas están ocupadas por ovejas
-    Para i desde 0 hasta Longitud(tablero.tablero) - 1 Hacer
-        Para j desde 0 hasta Longitud(tablero.tablero[0]) - 1 Hacer
-            Si tablero.tablero[i][j] != 'O' Entonces
-                Devolver Falso // Todavía hay celdas vacías
-            Fin Si
-        Fin Para
-    Fin Para
-    Devolver Verdadero #Todas las celdas están ocupadas por ovejas, se ha terminado el juego
-Fin Función
+        Si no esMovimientoValido(tablero, movimiento) Entonces:
+            Imprimir("El movimiento no es válido. La celda ya contiene una oveja.")
+            Continuar
+        fin si
 
-Función Movimiento obtenerMovimiento()
-    Scanner scanner = Nuevo Scanner(System.in)
-    Mostrar("Ingrese la fila donde desea mover la oveja: ")
-    Entero fila = scanner.SiguienteEntero()
+        realizarMovimiento(tablero, movimiento)
 
-    Mostrar("Ingrese la columna donde desea mover la oveja: ")
-    Entero columna = scanner.SiguienteEntero()
+        Si esConfiguracionFinal(tablero) Entonces:
+            Imprimir("¡Objetivo alcanzado!")
+            descanso
+        fin si
+    fin mientras
 
-    Posicion posicion = Nueva Posicion(fila, columna)
+    Función booleana esMovimientoValido(Tablero tablero, Posicion posicion):
+        Devolver tablero.obtenerValor(posicion) = '.'
 
-    Devolver Nuevo MovimientoOveja(posicion)
-Fin Función
+    Función realizarMovimiento(Tablero tablero, Posicion nuevaPosicion):
+        tablero.realizarMovimiento(nuevaPosicion)
 
-Función Posicion obtenerPosicion()
-    Scanner scanner = Nuevo Scanner(System.in)
-    Mostrar("Ingrese la fila del movimiento: ")
-    Entero fila = scanner.SiguienteEntero()
+    Función booleana esConfiguracionFinal(Tablero tablero):
+        Para fila de 0 hasta tablero.TAMANIO - 1
+            Para columna de 0 hasta tablero.TAMANIO - 1
+                Si tablero.obtenerValor(Posicion(fila, columna)) = '.' Entonces:
+                    Devolver falso
+                fin si
+            fin para
+        fin para
+        Devolver verdadero
 
-    Mostrar("Ingrese la columna del movimiento: ")
-    Entero columna = scanner.SiguienteEntero()
-
-    Devolver Nueva Posicion(fila, columna)
-Fin Función
-
-#Llamada a la función principal para iniciar el juego
-JuegoRebanioOvejas()
+    Función Posicion obtenerMovimiento():
+        Imprimir("Ingrese las coordenadas de la celda a la que desea mover una oveja (fila columna): ")
+        Entero fila = LeerEntero()
+        Entero columna = LeeroEntero()
+        Devolver nueva Posicion(fila, columna)
