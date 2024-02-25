@@ -1,0 +1,27 @@
+@startuml
+class Posicion {
+    - fila: int
+    - columna: int
+    + Posicion(fila: int, columna: int)
+}
+class Tablero {
+    - TAMANIO: int
+    - tablero: char[][]
+    + Tablero()
+    + inicializarTablero(): void
+    + generarPosicionesAleatorias(cantidad: int): List<Posicion>
+    + toString(): String
+    + obtenerValor(posicion: Posicion): char
+    + realizarMovimiento(nuevaPosicion: Posicion): void
+}
+class JuegoRebanioOvejas {
+    + main(args: String[]): void
+    + esMovimientoValido(tablero: Tablero, posicion: Posicion): boolean
+    + realizarMovimiento(tablero: Tablero, nuevaPosicion: Posicion): void
+    + esConfiguracionFinal(tablero: Tablero): boolean
+    + obtenerMovimiento(scanner: Scanner): Posicion
+}
+Posicion --> Tablero
+Tablero --> Posicion
+JuegoRebanioOvejas --> Tablero
+@enduml
